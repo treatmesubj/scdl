@@ -1,3 +1,20 @@
+treatmesubj fork: 
+```
+config path to music folder
+organizes [-l] url downloads by artist
+Users
+...
+└───User
+│   ...
+│   └───Music
+│   │   ...
+│   │   └───[Artist]
+│   │   │   │     [song1.mp3]
+│   │   │   │     [song2.mp3]
+│   │   │   │     [song3.mp3]
+│   │   │   │     ...
+...
+```
 # Soundcloud Music Downloader
 ## Description
 
