@@ -3,6 +3,8 @@ treatmesubj fork:
 my config path to music folder
 try dynamic win32api user path to music folder
 organizes [-l] url downloads by artist
+file struc:
+
 Users
 ...
 └───User
