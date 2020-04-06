@@ -202,9 +202,6 @@ def main():
     if arguments['--remove']:
         remove_files()
 
-    # if not os.path.exists(f"{os.getcwd()}/{username}"):  # treatmesubj
-    #   os.makedirs(f"{os.getcwd()}/{username}")  # treatmesubj
-
 
 def get_config():
     """
