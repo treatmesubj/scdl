@@ -42,7 +42,7 @@ scdl -l https://soundcloud.com/kobiblastoyz -f
 # Download one track
 scdl -l https://soundcloud.com/jumpstreetpsy/low-extender
 
-# Download one playlist
+# Download one playlist/album
 scdl -l https://soundcloud.com/pandadub/sets/the-lost-ship
 
 # Download only new tracks from a playlist
