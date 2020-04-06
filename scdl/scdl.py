@@ -65,6 +65,7 @@ import re
 import tempfile
 import codecs
 import shlex
+import win32api
 
 import configparser
 import mutagen
@@ -129,6 +130,10 @@ def main():
 
     # import conf file
     get_config()
+    try:  # treatmesubj
+        os.chdir(f"C:\\Users\\{win32api.GetUserName()}\\Music")  # treatmesubj
+    except Exception:  # treatmesubj
+        print("couldn't change dir to user")  # treatmesubj
 
     logger.info('Soundcloud Downloader')
     logger.debug(arguments)
