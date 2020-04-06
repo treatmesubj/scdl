@@ -197,6 +197,9 @@ def main():
     if arguments['--remove']:
         remove_files()
 
+    # if not os.path.exists(f"{os.getcwd()}/{username}"):  # treatmesubj
+    #   os.makedirs(f"{os.getcwd()}/{username}")  # treatmesubj
+
 
 def get_config():
     """
@@ -267,8 +270,45 @@ def parse_url(track_url):
     global arguments
     item = get_item(track_url)
     logger.debug(item)
+
+    print("~"*40)  # treatmesubj
+    for key, val in item.items():  # treatmesubj
+        print(f"{key}: ", val)  # treatmesubj
+    print("~"*40)  # treatmesubj
+
     if not item:
         return
+
+    else:  # treatmesubj
+        if not os.path.exists(f"{os.getcwd()}/{item['user']['username']}"):  # treatmesubj
+            os.makedirs(f"{os.getcwd()}/{item['user']['username']}")  # treatmesubj
+        os.chdir(f"{os.getcwd()}/{item['user']['username']}")  # treatmesubj
+
+        if item['kind'] == 'track':  # treatmesubj
+            logger.info('Found a track')  # treatmesubj
+            download_track(item)  # treatmesubj
+        elif item['kind'] == 'playlist':  # treatmesubj
+            logger.info('Found a playlist')  # treatmesubj
+            download_playlist(item)  # treatmesubj
+        elif item['kind'] == 'user':  # treatmesubj
+            logger.info('Found a user profile')  # treatmesubj
+            if arguments['-f']:  # treatmesubj
+                download(item, 'favorites', 'likes')  # treatmesubj
+            elif arguments['-C']:  # treatmesubj
+                download(item, 'commented', 'commented tracks')  # treatmesubj
+            elif arguments['-t']:  # treatmesubj
+                download(item, 'tracks', 'uploaded tracks')  # treatmesubj
+            elif arguments['-a']:  # treatmesubj
+                download(item, 'all', 'tracks and reposts')  # treatmesubj
+            elif arguments['-p']:  # treatmesubj
+                download(item, 'playlists', 'playlists')  # treatmesubj
+            elif arguments['-m']:  # treatmesubj
+                download(item, 'playlists-liked', 'my and liked playlists')  # treatmesubj
+            else:  # treatmesubj
+                logger.error('Please provide a download type...')  # treatmesubj
+        else:  # treatmesubj
+            logger.error('Unknown item type {0}'.format(item['kind']))  # treatmesubj
+        """
     elif item['kind'] == 'track':
         logger.info('Found a track')
         download_track(item)
@@ -293,6 +333,7 @@ def parse_url(track_url):
             logger.error('Please provide a download type...')
     else:
         logger.error('Unknown item type {0}'.format(item['kind']))
+        """
 
 
 def who_am_i():
@@ -448,6 +489,8 @@ def get_filename(track, original_filename=None):
         ext = os.path.splitext(original_filename)[1]
     filename = title[:251] + ext.lower()
     filename = ''.join(c for c in filename if c not in invalid_chars)
+    # filename = f"{username}/{filename}"  # treatmesubj
+    # print(f"********{filename}****")  # treatmesubj
     return filename
 
 
