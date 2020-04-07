@@ -29,7 +29,7 @@ Compatible with Windows, OS X, Linux.
 ## System requirements
 
 * python3
-* ffmpeg
+* ffmpeg command line tool - http://ffmpeg.org/download.html
 
 ## Installation Instructions
 https://github.com/flyingrub/scdl/wiki/Installation-Instruction
